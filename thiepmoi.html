@@ -80,7 +80,7 @@
                 <label for="" class="cnt-album">CÙNG XEM BST CỦA CHÚNG MÌNH NHÉ!</label>
             </div>
               <!-- Slider container -->
-              <div class="slider">
+              <!-- <div class="slider">
                 <div class="slide">
                 <img src="./thiep/anh/4_13_11zon.webp" alt="" />
                 </div>
@@ -118,7 +118,32 @@
 
                 <button class="btn btn-next"><i class="fa-solid fa-caret-right"></i></button>
                 <button class="btn btn-prev"><i class="fa-solid fa-caret-left"></i></button>
-            </div>
+            </div> -->
+
+
+            <!-- gallery -->
+
+            <section class="photos">
+                <img src="./thiep/anh/4_13_11zon.webp" alt="Ảnh 6" class="photo-img">
+                <img src="./thiep/anh/5_11zon.webp" alt="Ảnh 6" class="photo-img">
+                <img src="./thiep/anh/6_1_11zon.webp" alt="Ảnh 6" class="photo-img">
+                <img src="./thiep/anh/7.webp" alt="Ảnh 6" class="photo-img">
+                <img src="./thiep/anh/8_2_11zon.webp" alt="Ảnh 6" class="photo-img">
+                <img src="./thiep/anh/9_3_11zon.webp" alt="Ảnh 6" class="photo-img">
+                <img src="./thiep/anh/10_4_11zon.webp" alt="Ảnh 6" class="photo-img">
+                <img src="./thiep/anh/11_5_11zon.webp" alt="Ảnh 6" class="photo-img">
+                <img src="./thiep/anh/12_6_11zon.webp" alt="Ảnh 6" class="photo-img">
+                <img src="./thiep/anh/13_7_11zon.webp" alt="Ảnh 6" class="photo-img">
+                <img src="./thiep/anh/14_8_11zon.webp" alt="Ảnh 6" class="photo-img">
+              </section>
+                
+                <!-- Cửa sổ hiển thị hình ảnh -->
+                <div id="popup" class="popup-overlay">
+                    <span id="close-popup" class="close-btn">&times;</span>
+                    <button id="prev-btn" class="nav-btn"><i class="fa-solid fa-caret-left"></i></button>
+                    <img id="popup-img" src="" alt="Hình ảnh lớn">
+                    <button id="next-btn" class="nav-btn"><i class="fa-solid fa-caret-right"></i></button>
+                  </div>
 
             <div class="box-form" >
                 <div class="box-lb">
@@ -295,6 +320,51 @@
             slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
         });
         });
+
+     </script>
+     <script>
+       // Lấy tất cả các ảnh và popup
+            const images = document.querySelectorAll('.photo-img');
+            const popup = document.getElementById('popup');
+            const popupImg = document.getElementById('popup-img');
+            const closeBtn = document.getElementById('close-popup');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            // Lưu trữ chỉ số ảnh hiện tại
+            let currentIndex = 0;
+
+            // Hàm mở cửa sổ popup và hiển thị ảnh
+            function openPopup(index) {
+            popup.style.display = 'flex';
+            popupImg.src = images[index].src;
+            currentIndex = index;
+            }
+
+            // Khi nhấn vào ảnh trong gallery
+            images.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                openPopup(index);
+            });
+            });
+
+            // Đóng cửa sổ popup
+            closeBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+            });
+
+            // Chuyển đến ảnh tiếp theo
+            nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length; // Tính toán chỉ số ảnh tiếp theo (quay vòng)
+            popupImg.src = images[currentIndex].src;
+            });
+
+            // Chuyển đến ảnh trước đó
+            prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length; // Tính toán chỉ số ảnh trước đó (quay vòng)
+            popupImg.src = images[currentIndex].src;
+            });
+
 
      </script>
      <script src="./thiep/thiep.js"></script>

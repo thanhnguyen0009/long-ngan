@@ -854,6 +854,90 @@ textarea{
 }
 
 
+
+
+/* ===Gallery============= */
+
+/* .photos container */
+.photos {
+  column-count: 3;
+  column-gap: 20px;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Thiết lập cho mỗi ảnh */
+.photos img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 16px;
+  transition: all 0.2s ease-in-out;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+/* Hiệu ứng hover */
+.photos img:hover {
+  filter: contrast(125%);
+  transform: scale(1.05);
+}
+
+/* Cửa sổ popup */
+.popup-overlay {
+  display: none; /* Ẩn mặc định */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Nền mờ */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+/* Các nút Next và Prev */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 1001;
+}
+
+#prev-btn {
+  left: 10px;
+}
+
+#next-btn {
+  right: 10px;
+}
+
+
+
 /* ================================ */
 
 @media (max-width: 480px){
